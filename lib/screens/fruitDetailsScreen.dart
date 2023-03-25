@@ -61,7 +61,7 @@ class FruitDetailsScreen extends StatelessWidget {
                     content: Text("${fruit.name} a été ajouté au panier."),
                     backgroundColor: Colors.blue,),);
                   },
-                  child: const Text('Ajouter ce fruit au panier')),
+                  child: Icon(Icons.shopping_cart),),
             ),
             Expanded(
                 child: FlutterMap(

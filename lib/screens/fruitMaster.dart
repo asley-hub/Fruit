@@ -24,8 +24,8 @@ class _FruitsMasterState extends State<FruitsMaster> {
   late List<Fruit> _fruits;
   List<Fruit> _cart = [];
   late Future<List<Fruit>> lesFruitsFuture = getFruits();
-  late List<String> lesSaisons = ['Tous'];
-  late String saisonSelect = lesSaisons[0];
+  late List<String> saisons = ['Tous'];
+  late String saisonSelect = saisons[0];
 
   Future<List<Fruit>> getFruits() async {
     List<Fruit> fruits = [];
@@ -41,8 +41,8 @@ class _FruitsMasterState extends State<FruitsMaster> {
       }
 
       for(var fruit in fruits){
-        if(!lesSaisons.contains(fruit.season)){
-          lesSaisons.add(fruit.season);
+        if(!saisons.contains(fruit.season)){
+          saisons.add(fruit.season);
         }
       }
     } catch (e) {
@@ -59,7 +59,7 @@ class _FruitsMasterState extends State<FruitsMaster> {
     setState(() {
       lesFruitsFuture = getFruits();
       if (value == 'Tous') {
-        saisonSelect = lesSaisons[0];
+        saisonSelect = saisons[0];
       } else {
         saisonSelect = value;
         lesFruitsFuture.then((fruits) {
@@ -108,7 +108,7 @@ class _FruitsMasterState extends State<FruitsMaster> {
               onChanged: (String? value) {
                 fruitFiltre(value);
               },
-              items: lesSaisons.map<DropdownMenuItem<String>>((String value) {
+              items: saisons.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
